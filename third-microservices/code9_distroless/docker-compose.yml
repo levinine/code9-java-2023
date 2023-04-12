@@ -1,0 +1,7 @@
+services: 
+  distroless: 
+    image: distroless_app
+    volumes:
+    - ./bin/sh:/bin/sh
+    ports:
+      - 8081:8080
