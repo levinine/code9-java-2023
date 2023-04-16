@@ -1,3 +1,4 @@
-first-java/maven-parent-child/.vscode
-first-java/maven-parent-child/child-app/target
+/first-java/maven-parent-child/.vscode
+/first-java/maven-parent-child/child-app/target/
+/third-microservices/code9_distroless/target
 
