@@ -23,3 +23,6 @@ down:
 
 destroy:
 	docker-compose down -v
+
+destroy-images:
+	docker images | grep levinine/codenine | awk '{print $3}' | xargs docker rmi -f
