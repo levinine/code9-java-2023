@@ -1,0 +1,24 @@
+# Configuration for the Spring Data Source, in this case a MariaDB instance running on localhost
+spring:
+  datasource:
+    platform: mariadb
+    url: jdbc:mariadb://localhost:3306/example-security?useSSL=false&createDatabaseIfNotExist=true
+    username: newuser
+    password: password
+    driver-class-name: org.mariadb.jdbc.Driver
+  # Configuration for the Spring JPA, with hibernate specific settings
+  jpa:
+    hibernate:
+      ddl-auto: create-drop # Automatically create and drop database tables based on entity classes
+    show-sql: true # Show SQL queries in the console
+    properties:
+      hibernate:
+        format_sql: true # Format SQL queries for better readability
+    database-platform: org.hibernate.dialect.MariaDBDialect # Set the Hibernate dialect for MariaDB
+
+# Configuration for custom properties of the application
+application:
+  security:
+    jwt:
+      secret-key: 472D4B6150645367566B59703373357638792F423F4528482B4D625165546857 # Secret key used to sign and verify JWT tokens
+      expiration: 60000 # Expiration time for access tokens in milliseconds, here it's 1 minute
