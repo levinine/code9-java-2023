@@ -15,7 +15,8 @@ public class DependencyFactory {
 
     // return an instance of DynamoDbClient
     public static DynamoDbEnhancedClient dynamoDbEnhancedClient() {
-        return DynamoDbEnhancedClient.builder().dynamoDbClient(DynamoDbClient.builder().credentialsProvider(EnvironmentVariableCredentialsProvider.create())
+        return DynamoDbEnhancedClient.builder().dynamoDbClient(DynamoDbClient.builder()
+                .credentialsProvider(EnvironmentVariableCredentialsProvider.create())
                 .region(Region.of(System.getenv(SdkSystemSetting.AWS_REGION.environmentVariable())))
                 .httpClientBuilder(UrlConnectionHttpClient.builder()).build()).build();
     }
