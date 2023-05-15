@@ -1,0 +1,48 @@
+service: order-api
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: java8
+  region: eu-central-1
+  environment:
+    TABLE: ${self:service}-${sls:stage}-ItemsDynamoDbTable-${sls:instanceId}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - dynamodb:DescribeTable
+        - dynamodb:Query
+        - dynamodb:Scan
+        - dynamodb:GetItem
+        - dynamodb:BatchGetItem
+      Resource: "arn:aws:dynamodb:${aws:region}:${aws:accountId}:table/${self:provider.environment.TABLE}"
+
+package:
+  artifact: target/aws-serverless-app-dev.jar
+
+functions:
+  getItem:
+    handler: com.serverless.lambda.GetItemFunction
+    events:
+      - http:
+          path: /items/{id}
+          method: get
+
+resources:
+  Resources:
+    OrdersDynamoDbTable:
+      Type: 'AWS::DynamoDB::Table'
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: id
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id
+            KeyType: HASH
+#        ProvisionedThroughput:
+#          ReadCapacityUnits: 1
+#          WriteCapacityUnits: 1
+        BillingMode: PAY_PER_REQUEST
+        SSESpecification:
+          SSEEnabled: true
+        TableName: ${self:provider.environment.TABLE}
