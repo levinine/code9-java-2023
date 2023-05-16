@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 /**
  * This class is responsible for configuring Spring Security for the application. It
@@ -44,6 +45,8 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers(new AntPathRequestMatcher("/h2/**")) // Allow access to H2 console URL
+                    .permitAll()
                 .requestMatchers("/api/auth/**", "/api/hello-everyone")
                     .permitAll()
                 .anyRequest()
@@ -54,6 +57,8 @@ public class SecurityConfig {
                 .and()
                 .authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
+
+        http.headers().frameOptions().disable(); // Disable X-Frame-Options header to allow loading H2 console in an iframe
 
         return http.build();
     }
