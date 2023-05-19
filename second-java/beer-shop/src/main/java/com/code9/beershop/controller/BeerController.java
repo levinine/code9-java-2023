@@ -6,6 +6,7 @@ import com.code9.beershop.model.Beer;
 import com.code9.beershop.service.BeerService;
 import com.code9.beershop.service.IngredientService;
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,6 +17,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/beers")
+@Slf4j
 @Validated
 public class BeerController {
 
@@ -35,6 +37,7 @@ public class BeerController {
      */
     @GetMapping("/getAll")
     public ResponseEntity<List<BeerDto>> getAllBeers() {
+        log.info("Fetching all beers");
         List<BeerDto> beersDtos = beerConverter.toDtoList(beerService.getAllBeers());
         return new ResponseEntity<>(beersDtos, HttpStatus.OK);
     }
@@ -47,7 +50,9 @@ public class BeerController {
      */
     @PostMapping("/saveBeer")
     public ResponseEntity<BeerDto> saveBeer(@Valid @RequestBody BeerDto beerDto) {
+        log.info("Saving a new beer: {}", beerDto.getName());
         Beer beer = beerService.saveBeer(beerConverter.toEntity(beerDto));
+        log.info("Saved beer: ID={}, Name={}", beer.getId(), beer.getName());
         return new ResponseEntity<>(beerConverter.toDto(beer),HttpStatus.CREATED);
     }
 }
