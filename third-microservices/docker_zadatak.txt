@@ -1,0 +1,29 @@
+1) Pokrenuti Docker Deamon (Docker Desktop)
+
+2) Skinuti Java 11 Docker Image sa Docker Hub-a
+
+3) Pokrenuti Java 11 Docker Container
+
+4) Izlistati sve Docker Container-e
+
+5) Proveriti verziju jave unutar Docker Containera da bismo se uverili da Container radi
+
+6) Kreirati Hello world java spring app sa kontrolerom i endpointom koji vraca "Hello World!"
+   Posto nemamo postman koristiti terminal za rest pozive: 
+															- linux: curl --location 'http://localhost:8081/hello'
+															- windows: Invoke-WebRequest -Uri 'http://localhost:8080/hello' 
+
+7) Kreirati Dockerfile u root-u projekta:
+											- iskoristiti FROM i klonirani docker image
+											- postaviti radni direktorijum unutar konteinera u app folder
+											- kopirati jar aplikacije sa lokala u konteiner
+											- postaviti entry point komande za pokretanje aplikacije
+											
+8) Izbildovati lokalni Docker Image
+
+9) Kreirati Docker Compose file:
+								- u sklopu servisa dodati Hello world java app
+								- iskoristiti Docker Image iz prethodnog koraka
+								- postaviti lokalni port na 8081 a port unutar konteinera na 8080
+								
+10) Pokrenuti konteiner koriscenjem compose komande
