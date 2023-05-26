@@ -1,10 +1,13 @@
 #  Split monolithic app to microservices
 
-**Before:**
+**Before:** <br/>
+
 ![img.png](img.png)
 
-**After:**
+**After:** <br/>
+
 ![img_1.png](img_1.png)
+
 **Tasks:**
 
 - Split monolithic app to microservices - follow provided steps
