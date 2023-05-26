@@ -1,0 +1,13 @@
+databaseChangeLog:
+  - include:
+      relativeToChangelogFile: true
+      file: /changes/01-create-table.yaml
+  - include:
+      relativeToChangelogFile: true
+      file: /changes/02-add-column.xml
+  - include:
+      relativeToChangelogFile: true
+      file: /changes/03-insert-data.sql
+  - include:
+      relativeToChangelogFile: true
+      file: /changes/04-rename-column.json

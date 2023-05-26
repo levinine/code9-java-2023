@@ -1,0 +1,37 @@
+{
+  "databaseChangeLog": [
+    {
+      "changeSet":  {
+        "id":  "renameColumn",
+        "author":  "liquibase",
+        "preConditions": [
+          {
+            "onFail": "MARK_RAN"
+          },
+          {
+            "onError": "MARK_RAN"
+          },
+          {
+            "tableExists": {
+              "tableName": "person"
+            }
+          },
+          {
+            "columnExists": {
+              "tableName": "person",
+              "columnName": "score"
+            }
+          }
+        ],
+        "changes":  [{
+          "renameColumn":  {
+            "columnDataType":  "int",
+            "newColumnName":  "record",
+            "oldColumnName":  "score",
+            "tableName":  "person"
+          }
+        }]
+      }
+    }
+  ]
+}
