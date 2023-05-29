@@ -1,0 +1,32 @@
+1) Windows: pokrenuti Docker Desktop kao administrator
+			linux - sudo systemctl start docker
+			sudo systemctl status docker
+
+2) docker pull openjdk:11
+
+3) (winpty) docker run --rm -it openjdk:11
+
+4) docker ps -a
+
+5) mvn clean install u rootu projekta
+
+6) docker exec <container_id> java -version
+
+7) moze se iskoristiti distroless app primer. Testirati kroz postman ili curl komandama
+
+8)	- Dockerfile bez ekstenzije
+	- FROM openjdk:11
+	- WORKDIR /app
+	- COPY hello-world-app.jar /app
+	- CMD ["java", "-jar", "hello-world-app.jar"]
+	
+9) docker build -t hello-world-image .
+
+10)	docker-compose.yml
+	services:
+	  hello-world-app:
+		image: hello-world-image
+		ports:
+		  - 8081:8080
+
+11) docker-compose up

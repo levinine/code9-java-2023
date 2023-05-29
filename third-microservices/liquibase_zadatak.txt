@@ -1,0 +1,5 @@
+1) kreirati tabelu Job (id,name,description, employee_id) gde je employee_id forein key koji referencira tabelu Person.
+
+2) kreirati index za laksu pretragu Person tabele po koloni prezime opadajuce.
+
+3) napraviti sql scriptu koja upisuje podatke u tabele.
