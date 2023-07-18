@@ -1,0 +1,12 @@
+Moguci problemi:
+* Slabe masine a radi se na imidzima na VirtulBox:
+  * Ne treba zauzeti svu mogucu memoriju. Imali smo masine koje imaju 16GB RAMa. Treba rezervisati svega 8GB za pokretanje virtuelne masine da se slucajno ne bi desilo da se fizicka masina zaglavi pa se mora resetovati
+
+* Virtuelne masine su imutabilne (posle restarta virtuelne masine gube se svi podaci):
+  * Treba osigurati nacin da se moze prebaciti trenutno nakucani kod negde. Moze sopstveni git nalog studenta, zajednicki mauntovani drajv za studente ili nesto slicno
+
+* Docker ne radi u paraleli. Kada se sa dve ili vise masina odjednom pokusa izvrsiti `docker pull` samo ce jedan uspeti a ostali ce biti zakljucani neko kratko vreme:
+  * Najbolje je imati u vidu svi docker imidzi koji ce se koristiti i da neko od predavaca pocne odmah da izvrsava `docker pull` na racunarima, jedan po jedan. Kada se uvodno predavanje zavrsi, trebalo bi da svaki student na svojoj masini ima imidze spremne za koriscenje.
+
+* Mikroservisi su preobimni:
+  * Ovde se ne moze uraditi bog zna sta. Predlazem da se predavanje nastavi u cetvrtoj radionici posto je AWS radionica zavrsena sat vremena ranije
